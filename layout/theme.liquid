@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#d8f3dc">
+    <link rel="canonical" href="{{ canonical_url }}">
+
+    <title>
+      {% if page_title %}
+        {{ page_title }}
+      {% else %}
+        {{ shop.name }}
+      {% endif %}
+      {% unless page_title contains shop.name %} | {{ shop.name }}{% endunless %}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% else %}
+      <meta name="description" content="SilkRoot Herbal Damage Repair Shampoo — sulfate-free, anti-hairfall, salon-quality care for stronger, healthier hair.">
+    {% endif %}
+
+    {{ content_for_header }}
+    {{ 'theme.css' | asset_url | stylesheet_tag }}
+    {{ 'theme.js' | asset_url | script_tag }}
+  </head>
+  <body>
+    {% section 'announcement-bar' %}
+    {% section 'header' %}
+
+    <main id="main-content" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    {% section 'footer' %}
+  </body>
+</html>

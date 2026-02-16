@@ -1,0 +1,114 @@
+<section class="section product-page" itemscope itemtype="https://schema.org/Product">
+  <div class="container product-grid">
+    <div class="product-gallery">
+      {% if product.images.size > 0 %}
+        {% for image in product.images %}
+          <img src="{{ image | image_url: width: 900 }}" alt="{{ image.alt | default: product.title | escape }}" loading="lazy" width="900" height="900" itemprop="image">
+        {% endfor %}
+      {% else %}
+        {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+
+    <div class="product-details" id="sticky-atc-target">
+      <span class="badge">Bestseller</span>
+      <h1 itemprop="name">{{ product.title }}</h1>
+      <div class="rating-stars">★★★★★ <small>4.8 (1,248 reviews)</small></div>
+      <p class="price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+        <span itemprop="priceCurrency" content="INR">₹</span><span itemprop="price">{{ product.price | money_without_currency }}</span>
+        <meta itemprop="availability" content="https://schema.org/InStock">
+      </p>
+
+      {% form 'product', product, class: 'product-form' %}
+        {% if product.variants.size > 1 %}
+          <label for="variant-select">Variant</label>
+          <select id="variant-select" name="id">
+            {% for variant in product.variants %}
+              <option value="{{ variant.id }}" {% if variant == product.selected_or_first_available_variant %}selected{% endif %}>{{ variant.title }}</option>
+            {% endfor %}
+          </select>
+        {% else %}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+        {% endif %}
+
+        <label for="quantity">Quantity</label>
+        <input id="quantity" type="number" name="quantity" min="1" value="1">
+
+        <button type="submit" class="btn btn--full">Add to cart</button>
+
+        <div class="trust-mini">
+          <span>🚚 Free shipping above ₹999</span>
+          <span>💵 COD available India</span>
+          <span>🧪 Dermatologically tested</span>
+        </div>
+      {% endform %}
+
+      <ul class="benefits-list">
+        <li>Reduces hairfall caused by breakage</li>
+        <li>Repairs dry, damaged hair strands</li>
+        <li>Sulfate-free gentle scalp cleanse</li>
+        <li>Salon-quality smoothness & shine</li>
+      </ul>
+
+      <details open>
+        <summary>Ingredients</summary>
+        <p>Bhringraj, Onion Oil, Argan Oil, Aloe Vera, Coconut-derived cleansers, Rosemary Extract.</p>
+      </details>
+      <details>
+        <summary>How to use</summary>
+        <ol>
+          <li>Wet hair thoroughly.</li>
+          <li>Massage shampoo into scalp for 1–2 minutes.</li>
+          <li>Rinse and repeat if needed.</li>
+          <li>Follow with conditioner for best results.</li>
+        </ol>
+      </details>
+      <details>
+        <summary>Delivery estimate</summary>
+        <p>Dispatch within 24 hours. Delivery in 3–7 business days across India.</p>
+      </details>
+    </div>
+  </div>
+
+  <div class="container section">
+    <h2 class="section-title">Customer Reviews</h2>
+    <div class="card-grid">
+      <article class="card"><div class="rating-stars">★★★★★</div><p>Noticeable reduction in hairfall in a month.</p><strong>Neha, Delhi</strong></article>
+      <article class="card"><div class="rating-stars">★★★★★</div><p>Smells premium and leaves my hair soft.</p><strong>Ritika, Pune</strong></article>
+      <article class="card"><div class="rating-stars">★★★★☆</div><p>Great formula, gentle on my colored hair.</p><strong>Sana, Bengaluru</strong></article>
+    </div>
+  </div>
+
+  <div class="sticky-atc" data-sticky-atc>
+    <div>
+      <strong>{{ product.title }}</strong>
+      <span>{{ product.price | money }}</span>
+    </div>
+    <button class="btn" type="button" data-scroll-to="sticky-atc-target">Add to cart</button>
+  </div>
+
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Product",
+      "name": {{ product.title | json }},
+      "image": [{% for image in product.images %}{{ image | image_url: width: 1000 | prepend: 'https:' | json }}{% unless forloop.last %},{% endunless %}{% endfor %}],
+      "description": {{ product.description | strip_html | json }},
+      "brand": {"@type": "Brand", "name": "SilkRoot"},
+      "offers": {
+        "@type": "Offer",
+        "priceCurrency": "INR",
+        "price": {{ product.price | money_without_currency | json }},
+        "availability": "https://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}",
+        "url": {{ shop.url | append: product.url | json }}
+      }
+    }
+  </script>
+</section>
+
+{% schema %}
+{
+  "name": "Main product",
+  "settings": []
+}
+{% endschema %}

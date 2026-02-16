@@ -1,0 +1,20 @@
+<header class="site-header">
+  <div class="container header__row">
+    <a class="logo" href="{{ routes.root_url }}">{{ shop.name | default: 'SilkRoot' }}</a>
+    <nav class="site-nav" aria-label="Main navigation">
+      <a href="{{ routes.root_url }}">Home</a>
+      <a href="{{ routes.collections_url }}">Shop</a>
+      <a href="/pages/about">About</a>
+      <a href="/pages/faq">FAQ</a>
+      <a href="/pages/contact">Contact</a>
+    </nav>
+    <a class="cart-link" href="{{ routes.cart_url }}">Cart ({{ cart.item_count }})</a>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "settings": []
+}
+{% endschema %}

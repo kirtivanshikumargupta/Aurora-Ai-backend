@@ -1,0 +1,33 @@
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div>
+      <h3>SilkRoot</h3>
+      <p>Premium herbal haircare for stronger, shinier, healthier hair.</p>
+    </div>
+    <div>
+      <h4>Shop</h4>
+      <ul>
+        <li><a href="{{ routes.all_products_collection_url }}">All Products</a></li>
+        <li><a href="/collections/shampoo">Herbal Shampoo</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Information</h4>
+      <ul>
+        <li><a href="/pages/about">About us</a></li>
+        <li><a href="/pages/contact">Contact</a></li>
+        <li><a href="/pages/faq">FAQ</a></li>
+        <li><a href="/pages/privacy-policy">Privacy policy</a></li>
+        <li><a href="/pages/shipping-returns">Shipping & returns</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="container footer-bottom">© {{ 'now' | date: '%Y' }} SilkRoot. Made in India.</div>
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": []
+}
+{% endschema %}

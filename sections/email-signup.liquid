@@ -1,0 +1,19 @@
+<section class="section">
+  <div class="container email-signup">
+    <h2>Get 10% Off Your First Order</h2>
+    <p>Join the SilkRoot haircare club for tips, offers, and early launches.</p>
+    {% form 'customer', class: 'email-form' %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+      <input type="email" name="contact[email]" placeholder="Enter your email" required>
+      <button class="btn" type="submit">Subscribe</button>
+    {% endform %}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Email signup",
+  "settings": [],
+  "presets": [{"name": "Email signup"}]
+}
+{% endschema %}

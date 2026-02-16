@@ -1,0 +1,13 @@
+[
+  {
+    "name": "Theme settings",
+    "settings": [
+      {
+        "type": "text",
+        "id": "brand_name",
+        "label": "Brand name",
+        "default": "SilkRoot"
+      }
+    ]
+  }
+]
