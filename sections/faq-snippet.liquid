@@ -1,0 +1,29 @@
+<section class="section section--accent">
+  <div class="container">
+    <h2 class="section-title">Quick FAQ</h2>
+    {% for block in section.blocks %}
+      <details class="faq-item" {{ block.shopify_attributes }}>
+        <summary>{{ block.settings.question }}</summary>
+        <p>{{ block.settings.answer }}</p>
+      </details>
+    {% endfor %}
+    <a class="text-link" href="/pages/faq">View full FAQ →</a>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "FAQ snippet",
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        {"type": "text", "id": "question", "label": "Question", "default": "Is this shampoo safe for colored hair?"},
+        {"type": "textarea", "id": "answer", "label": "Answer", "default": "Yes, the sulfate-free formula is gentle and suitable for color-treated hair."}
+      ]
+    }
+  ],
+  "presets": [{"name": "FAQ snippet", "blocks": [{"type": "faq"}, {"type": "faq"}, {"type": "faq"}]}]
+}
+{% endschema %}

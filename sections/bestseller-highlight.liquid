@@ -1,0 +1,32 @@
+<section class="section section--accent">
+  <div class="container product-highlight">
+    <div>
+      {% if section.settings.product.featured_image %}
+        <img src="{{ section.settings.product.featured_image | image_url: width: 700 }}" alt="{{ section.settings.product.title | escape }}" loading="lazy" width="700" height="700">
+      {% else %}
+        {{ 'product-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+    <div>
+      <span class="badge">Top Rated</span>
+      <h2>{{ section.settings.product.title | default: 'Herbal Damage Repair Shampoo' }}</h2>
+      <p>{{ section.settings.copy }}</p>
+      {% if section.settings.product != blank %}
+        <a class="btn" href="{{ section.settings.product.url }}">Buy for {{ section.settings.product.price | money }}</a>
+      {% else %}
+        <a class="btn" href="/products/herbal-damage-repair-shampoo">Buy for ₹499</a>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bestseller highlight",
+  "settings": [
+    {"type": "product", "id": "product", "label": "Product"},
+    {"type": "textarea", "id": "copy", "label": "Copy", "default": "Clinically inspired herbal formula infused with bhringraj, onion oil, and aloe vera for reduced hairfall and visible repair."}
+  ],
+  "presets": [{"name": "Bestseller highlight"}]
+}
+{% endschema %}

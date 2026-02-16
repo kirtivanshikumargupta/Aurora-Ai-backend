@@ -1,0 +1,19 @@
+<div class="announcement-bar">
+  <div class="container announcement-bar__inner">
+    <span>{{ section.settings.message }}</span>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    {
+      "type": "text",
+      "id": "message",
+      "label": "Message",
+      "default": "Free shipping above ₹999 | COD available across India"
+    }
+  ]
+}
+{% endschema %}

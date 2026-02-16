@@ -1,0 +1,50 @@
+{
+  "sections": {
+    "hero": {"type": "hero-banner", "settings": {}},
+    "values": {
+      "type": "value-propositions",
+      "blocks": {
+        "v1": {"type": "item", "settings": {"title": "Sulfate Free", "text": "Cleanses gently without drying."}},
+        "v2": {"type": "item", "settings": {"title": "Anti-Hairfall", "text": "Helps reduce breakage-related hairfall."}},
+        "v3": {"type": "item", "settings": {"title": "Natural Oils", "text": "Nourishes roots and restores shine."}}
+      },
+      "block_order": ["v1", "v2", "v3"],
+      "settings": {}
+    },
+    "best": {"type": "bestseller-highlight", "settings": {}},
+    "ingredients": {
+      "type": "ingredients-icons",
+      "blocks": {
+        "i1": {"type": "ingredient", "settings": {"title": "Bhringraj", "text": "Strengthens roots."}},
+        "i2": {"type": "ingredient", "settings": {"title": "Onion Oil", "text": "Supports scalp health."}},
+        "i3": {"type": "ingredient", "settings": {"title": "Argan Oil", "text": "Adds smoothness and gloss."}}
+      },
+      "block_order": ["i1", "i2", "i3"],
+      "settings": {}
+    },
+    "transform": {"type": "before-after", "settings": {}},
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "t1": {"type": "testimonial", "settings": {"quote": "My hair is softer and visibly healthier.", "author": "Aditi, Chennai"}},
+        "t2": {"type": "testimonial", "settings": {"quote": "I switched from salon brands and never looked back.", "author": "Pooja, Hyderabad"}},
+        "t3": {"type": "testimonial", "settings": {"quote": "Great fragrance and no frizz after wash.", "author": "Rhea, Kolkata"}}
+      },
+      "block_order": ["t1", "t2", "t3"],
+      "settings": {}
+    },
+    "trust": {"type": "trust-badges", "settings": {}},
+    "faq": {
+      "type": "faq-snippet",
+      "blocks": {
+        "f1": {"type": "faq", "settings": {"question": "Is this suitable for daily use?", "answer": "Yes, it is gentle enough for regular use."}},
+        "f2": {"type": "faq", "settings": {"question": "Is it sulfate-free?", "answer": "Yes, SilkRoot is free from sulfates and parabens."}},
+        "f3": {"type": "faq", "settings": {"question": "Is COD available?", "answer": "Yes, cash on delivery is available in most Indian pin codes."}}
+      },
+      "block_order": ["f1", "f2", "f3"],
+      "settings": {}
+    },
+    "email": {"type": "email-signup", "settings": {}}
+  },
+  "order": ["hero", "values", "best", "ingredients", "transform", "testimonials", "trust", "faq", "email"]
+}

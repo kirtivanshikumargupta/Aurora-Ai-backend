@@ -1,0 +1,31 @@
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Loved by Thousands</h2>
+    <div class="card-grid">
+      {% for block in section.blocks %}
+        <blockquote class="card" {{ block.shopify_attributes }}>
+          <div class="rating-stars">★★★★★</div>
+          <p>“{{ block.settings.quote }}”</p>
+          <cite>— {{ block.settings.author }}</cite>
+        </blockquote>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        {"type": "textarea", "id": "quote", "label": "Quote", "default": "Hairfall reduced within 3 washes and my hair feels so soft."},
+        {"type": "text", "id": "author", "label": "Author", "default": "Priya, Mumbai"}
+      ]
+    }
+  ],
+  "presets": [{"name": "Testimonials", "blocks": [{"type": "testimonial"}, {"type": "testimonial"}, {"type": "testimonial"}]}]
+}
+{% endschema %}

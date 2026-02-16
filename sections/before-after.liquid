@@ -1,0 +1,34 @@
+<section class="section section--accent">
+  <div class="container">
+    <h2 class="section-title">Visible Hair Transformation</h2>
+    <div class="before-after">
+      <div>
+        <h3>Before</h3>
+        {% if section.settings.before_image %}
+          <img src="{{ section.settings.before_image | image_url: width: 600 }}" alt="Before using SilkRoot shampoo" loading="lazy" width="600" height="600">
+        {% else %}
+          {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+      <div>
+        <h3>After 6 Weeks</h3>
+        {% if section.settings.after_image %}
+          <img src="{{ section.settings.after_image | image_url: width: 600 }}" alt="After using SilkRoot shampoo" loading="lazy" width="600" height="600">
+        {% else %}
+          {{ 'collection-2' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Before and after",
+  "settings": [
+    {"type": "image_picker", "id": "before_image", "label": "Before image"},
+    {"type": "image_picker", "id": "after_image", "label": "After image"}
+  ],
+  "presets": [{"name": "Before and after"}]
+}
+{% endschema %}

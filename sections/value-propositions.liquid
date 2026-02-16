@@ -1,0 +1,31 @@
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Why SilkRoot?</h2>
+    <div class="card-grid">
+      {% for block in section.blocks %}
+        <article class="card" {{ block.shopify_attributes }}>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Value propositions",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Proposition",
+      "settings": [
+        {"type": "text", "id": "title", "label": "Title", "default": "Sulfate Free"},
+        {"type": "textarea", "id": "text", "label": "Text", "default": "Gentle cleansing without stripping natural moisture."}
+      ]
+    }
+  ],
+  "max_blocks": 6,
+  "presets": [{"name": "Value propositions", "blocks": [{"type": "item"}, {"type": "item"}, {"type": "item"}]}]
+}
+{% endschema %}
